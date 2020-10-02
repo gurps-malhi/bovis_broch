@@ -167,6 +167,10 @@
 
   /*overrides styling*/
 
+  .fixed-bottom-footer{
+    position:absolute;
+    bottom:0%;
+  }
   .content-body{
       position:relative;
   }
