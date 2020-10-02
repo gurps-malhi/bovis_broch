@@ -24,7 +24,7 @@ body{
     position: relative;
     overflow: hidden;
     width: 8.27in;
-    height: 11.69in;
+    height: 13in;
     font-family: Arial,Helvetica,sans-serif;
     padding:30px 40px;
     color:#003A5D;
@@ -436,6 +436,7 @@ p{
     color: #EBEAE4;
     height: 30px;
     border-left: 1px solid #EBEAE4;
+    margin: 0px 3em;
 }
 
 .footer img{
