@@ -137,9 +137,9 @@
                     <!--footer section-->
                     <div class="fixed-bottom-footer"><!--change this to fixed-bottom-->
 
-                        <div class="row m-0">
+                        @*<div class="row m-0">
                             @Html.Raw(Model.ObjDevBrochure.StarsBanner)
-                        </div>
+                        </div>*@
 
 
                         <div class="row footer footer-style">
@@ -337,7 +337,7 @@
                                 </div>
 
                                 <!--House Details Partial-->
-                                <div class="flex-grow-1 content-body">
+                                <div class="content-body">
                                     @await Component.InvokeAsync("BrochureHouseDetails", new { Model.DevRef, housetype.HouseCode })
                                 </div>
                                 <!--end of House Details Partial-->
