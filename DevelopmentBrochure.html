@@ -1,0 +1,803 @@
+﻿@page "{devref}"
+@model Vistry_Homes_Sales_Website_CMS.DevelopmentBrochureModel
+@{
+    ViewData["Title"] = "Development Brochure";
+    Layout = null;
+    int PageNumber = 1;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Brochure for @Model.ObjDevDetails.DevName</title>
+    <link href="~/css/_bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/_bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="~/css/_bootstrap-reboot.min.css" rel="stylesheet" />
+    <link href="~/css/_spacing.css" rel="stylesheet" />
+    <link href="~/css/_style.css" rel="stylesheet" /> 
+    <link href="~/css/_iron_overrides.css" rel="stylesheet" /> 
+    <meta charset="utf-8">
+    <meta charset="ISO-8859-1">
+
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body>
+
+    <form id="development-brochure" method="post">
+
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="@Model.DevRef" value="@Model.DevRef" />
+        <input type="hidden" asp-for="@Model.BaseUrl" value="@Model.BaseUrl" />
+        <input type="hidden" asp-for="@Model.PhysicalPdfLocation" value="@Model.PhysicalPdfLocation" />
+
+
+        @*//height:90vh; overflow-y:auto; overflow-x:hidden; border-bottom: 5px solid purple*@
+        <div style="width:21cm; margin:0 auto;">
+            <!--start 1 page-->
+            <div class="page homepage">
+                <div class="b-container-fluid">
+                    <div class="content-body">
+                        <!--START - main logo-->
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img class="main-logo ml-60 mt-n10" src="@Model.ObjDevBrochure.LogoUrl" alt="Bovis Logo">
+                            </div>
+                        </div>
+                        <!--END - main logo-->
+                        <!--START banner image-->
+                        <div class="row">
+                            <div class="col-12 mt-30">
+                                <img class="text-center banner_img" src="@Model.ObjDevDetails.DevImageUrl" alt="Image of @Model.ObjDevDetails.DevName">
+                            </div>
+                        </div>
+                        <!--END - banner image-->
+                        <!--START sub heading-->
+                        <div class="row">
+                            <div class="col-12 mt-20 mb-10">
+                                <h2 class="text-center mb-10">@Model.ObjDevDetails.DevName</h2>
+                                <h4 class="text-center mb-15 font-weight-normal">@Model.ObjDevBrochure.OneLineAddress</h4>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p>@Html.Raw(Model.ObjDevDetails.DevSearchDescription)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--END - sub heading-->
+                        <!--START - opening hours and contact us-->
+                        <div class="row">
+                            <!--opening hours-->
+                            <div class="col-6">
+                                <h4>Opening hours:</h4>
+                                <hr>
+                                <table class="opening-hours-table mr-15">
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon:</td>
+                                            <td>@Model.ObjDevOpeningHours.Monday</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue:</td>
+                                            <td>@Model.ObjDevOpeningHours.Tuesday</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wed:</td>
+                                            <td>@Model.ObjDevOpeningHours.Wednesday</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thur:</td>
+                                            <td>@Model.ObjDevOpeningHours.Thursday</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="opening-hours-table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Fri:</td>
+                                            <td>@Model.ObjDevOpeningHours.Friday</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sat:</td>
+                                            <td>@Model.ObjDevOpeningHours.Saturday</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sun:</td>
+                                            <td>@Model.ObjDevOpeningHours.Sunday</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--Contact us-->
+                            <div class="col-6 pl-30">
+                                <h4>Contact us:</h4>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <img class="d-inline contact_icons" src="~/Images/icons/Agents.svg" alt="agents icon">
+                                        <p class="contact-us-p">@Model.ObjDevAddress.SalesAdvisor</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <img class="d-inline contact_icons" src="~/Images/icons/Contact.svg" alt="contact icon">
+                                        <p class="contact-us-p">@Model.ObjDevAddress.Telephone</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <img class="d-inline contact_icons" src="~/Images/icons/Directions.svg" alt="directions icon">
+                                        <p class="contact-us-p font-weight-bold"><a href="@Model.ObjDevBrochure.DevDirectionsUrl" class="link-txt-color" target="_blank"> Get directions</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--END - opening hours and contact us-->
+                    </div>
+                    <!--footer section-->
+                    <div class="fixed-bottom"><!--change this to fixed-bottom-->
+
+                        <div class="row m-0">
+                            @Html.Raw(Model.ObjDevBrochure.StarsBanner)
+                        </div>
+
+
+                        <div class="row footer footer-style">
+                            <div>
+                                <p class="font-weight-light">@Model.ObjDevOpeningHours.ShortDisplay</p>
+                            </div>
+                            <div class="spacer"></div>
+                            <div>
+                                <p><a href="tel:@Model.ObjDevAddress.Telephone" style="color:black"><span><img style="width:20%;" src="~/Images/icons/Contact.svg" alt="Contact Us"></span>@Model.ObjDevAddress.Telephone</a></p>
+                            </div>
+                            <div class="spacer"></div>
+                            <div>
+                                <p><span><a href="@Model.ObjDevBrochure.CallBackUrl" target="_blank" style="color:black"><img style="width:18%;" src="~/Images/icons/Request_a_callback.svg" alt="Request call back">Request call back</a></span></p>
+                            </div>
+                            <div class="spacer"></div>
+                            <div>
+                                <p><span><a href="@Model.ObjDevBrochure.ViewingUrl" target="_blank" style="color:black"><img style="width:18%;" src="~/Images/icons/Request_a_viewing.svg" alt="Request viewing">Request viewing</a></span></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="page_no">Page @PageNumber</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end footer section-->
+                </div>
+            </div>
+            <!--start 2 page-->
+            <div class="page dev-plan-page">
+                <div class="b-container-fluid">
+                    <div class="row header header-bg-color mx-0">
+                        <div class="col-8">
+                            <h2>Development Plan</h2>
+                            <h3 class="sub-header"><span>@Model.ObjDevDetails.DevName</span>, @Model.ObjDevAddress.Town</h3>
+                        </div>
+                        <div class="col-4">
+                            <img class="header-logo" src="@Model.ObjDevBrochure.LogoUrl" alt="Bovis logo">
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 content-body">
+                        <div class="row h-100 align-items-center position-relative">
+                            <div class="col-11 mx-auto">
+                                <img style="width:100%;" src="@Model.ObjDevPlan.DevPlanUrl" alt="Development plan for @Model.ObjDevDetails.DevName">
+                                <a class="btn btn-primary btn-solid position-absolute" style="bottom:0; left:72%;" href="@Model.ObjDevDetails.DevUrl" role="button">Open interactive plan</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--footer section-->
+                    <div class="flex-shrink-1">
+                        <p class="footer-content">note: The specification and features shown in this brochure were correct at time of PDF creation. Bovis Homes is continually reviewing and updating the specification on all housetypes and therefore reserves the right to change specification details. For full details regarding current specification and finishes, for the plots you are interested in, please refer to our sales advisor. PDF brochure created at @DateTime.Now.ToString("HH:MM") on @DateTime.Today.ToString("dd-MMM-yyyy")</p>
+                        <div class="row footer footer-style">
+                            <div>
+                                <p class="font-weight-light">@Model.ObjDevOpeningHours.ShortDisplay</p>
+                            </div>
+                            <div class="spacer"></div>
+                            <div>
+                                <p><a href="tel:@Model.ObjDevAddress.Telephone" style="color:black"><span><img style="width:20%;" src="~/Images/icons/Contact.svg" alt="Contact Us"></span>@Model.ObjDevAddress.Telephone</a></p>
+                            </div>
+                            <div class="spacer"></div>
+                            <div>
+                                <p><span><a href="@Model.ObjDevBrochure.CallBackUrl" target="_blank" style="color:black"><img style="width:18%;" src="~/Images/icons/Request_a_callback.svg" alt="Request call back">Request call back</a></span></p>
+                            </div>
+                            <div class="spacer"></div>
+                            <div>
+                                <p><span><a href="@Model.ObjDevBrochure.ViewingUrl" target="_blank" style="color:black"><img style="width:18%;" src="~/Images/icons/Request_a_viewing.svg" alt="Request viewing">Request viewing</a></span></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                @{
+                                    PageNumber = PageNumber + 1;
+                                }
+                                <p class="page_no">Page @PageNumber</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end footer section-->
+                </div>
+            </div>
+
+            @{
+                if (Model.LstDevPlots.Count() > 0)
+                {
+                    var PagesToPrintCount = ((int)(Math.Ceiling((decimal)Model.LstDevPlots.Count() / 20) * 20)) / 20;
+
+                    for (int i = 0; i < PagesToPrintCount; i++)
+                    {
+                        PageNumber = PageNumber + 1;
+
+                        <div class="page avil-price-page">
+                            <div class="b-container-fluid">
+                                <div class="row header header-bg-color mx-0">
+                                    <div class="col-8">
+                                        <h2>Availability &amp; Prices</h2>
+                                        <h3 class="sub-header"><span>@Model.ObjDevDetails.DevName</span>, @Model.ObjDevAddress.Town</h3>
+                                    </div>
+                                    <div class="col-4 d-flex justify-content-end">
+                                        <img class="header-logo" src="https://www.bovishomes.co.uk/images/brochure-main-header-logo.png">
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 content-body">
+                                    <table class="table table_property mt-20">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Plot</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Beds</th>
+                                                <th scope="col">Offer</th>
+                                                <th scope="col">Garage/Parking</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">More Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @{
+                                                int Twenties = i * 20;
+                                                foreach (var plot in Model.LstDevPlots)
+                                                {
+                                                    if (plot.PlotId + 1 > Twenties && plot.PlotId + 1 <= (i + 1) * 20)
+                                                    {
+                                                        string PlotPrice = plot.PlotPrice == 0 ? "P.O.A" : "£" + Convert.ToDecimal(plot.PlotPrice).ToString("0,##");
+
+                                                        <tr>
+                                                            <td><a href="@plot.PlotUrl">@plot.PlotNumber</a></td>
+                                                            <td><a href="@plot.PlotUrl">@plot.HouseName</a></td>
+                                                            <td>@plot.BedroomCount</td>
+                                                            <td>@plot.PlotFlashName</td>
+                                                            <td>@plot.PlotParking</td>
+                                                            <td>@PlotPrice</td>
+                                                            <td><a class="btn btn-primary btn-outline" href="@plot.PlotUrl" role="button">More details</a></td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <!--footer section-->
+                                <div class="flex-shrink-1">
+
+                                    <p class="footer-content">@Model.ObjDevBrochure.LongSpecDisclaimer @DateTime.Now.ToShortTimeString() on @DateTime.Now.ToShortDateString()</p>
+                                    <div class="row footer footer-style">
+                                        <div>
+                                            <p class="font-weight-light">@Model.ObjDevOpeningHours.ShortDisplay</p>
+                                        </div>
+                                        <div class="spacer"></div>
+                                        <div>
+                                            <p><a href="tel:@Model.ObjDevAddress.Telephone" style="color:black"><span><img style="width:20%;" src="~/Images/icons/Contact.svg" alt="Contact Us"></span>@Model.ObjDevAddress.Telephone</a></p>
+                                        </div>
+                                        <div class="spacer"></div>
+                                        <div>
+                                            <p><span><a href="@Model.ObjDevBrochure.CallBackUrl" target="_blank" style="color:black"><img style="width:18%;" src="~/Images/icons/Request_a_callback.svg" alt="Request call back">Request call back</a></span></p>
+                                        </div>
+                                        <div class="spacer"></div>
+                                        <div>
+                                            <p><span><a href="@Model.ObjDevBrochure.ViewingUrl" target="_blank" style="color:black"><img style="width:18%;" src="~/Images/icons/Request_a_viewing.svg" alt="Request viewing">Request viewing</a></span></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p class="page_no">Page  @PageNumber</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end footer section-->
+                            </div>
+                        </div>
+                    }
+
+                }
+            }
+
+            @{
+
+                if (Model.LstDevPlots.Count() > 0)
+                {
+
+                    foreach (var housetype in Model.LstHouses)
+                    {
+                        <!--start house details page-->
+                        <div class="page home-101-page">
+                            <div class="b-container-fluid">
+                                <div class="row header header-bg-color mx-0">
+                                    <div class="col-8">
+                                        <h2>@housetype.HouseName</h2>
+                                        <h3 class="sub-header"><span>@housetype.DevName</span>, @housetype.Town</h3>
+                                    </div>
+                                    <div class="col-4 d-flex justify-content-end">
+                                        <img class="header-logo" src="https://www.bovishomes.co.uk/images/brochure-main-header-logo.png">
+                                    </div>
+                                </div>
+
+                                <!--House Details Partial-->
+                                <div class="flex-grow-1 content-body">
+                                    @await Component.InvokeAsync("BrochureHouseDetails", new { Model.DevRef, housetype.HouseCode })
+                                </div>
+                                <!--end of House Details Partial-->
+                                <!--footer section-->
+                                <div class="flex-shrink-1">
+                                    <p class="footer-content">note: All images are for illustrative purposes only. External details, internal specification, and layout may vary on individual properties. Images include optional upgrades at additional cost. Please refer to the sales advisor for specific plot details. This floorplan has been produced for illustrative purposes only. Room sizes shown are between arrow points as indicated on plan. The dimensions have tolerances of + or -50mm and should not be used other than for general guidance. If specific dimensions are required, enquiries should be made to the sales advisor. The floorplans shown are not to scale. Measurements are based on the original drawings. Slight variations may occur during construction. The specification and features shown in this brochure were correct at time of PDF creation. Bovis Homes is continually reviewing and updating the specification on all housetypes and therefore reserves the right to change specification details. For full details regarding current specification and finishes, for the plots you are interested in, please refer to our sales advisor. PDF brochure @DateTime.Now.ToString("HH:MM") on @DateTime.Today.ToString("dd-MMM-yyyy")</p>
+                                    <div class="row footer footer-style">
+                                        <div>
+                                            <p class="font-weight-light">@Model.ObjDevOpeningHours.ShortDisplay</p>
+                                            @*<p class="font-weight-block">10am - 5pm</p>*@
+                                        </div>
+                                        <div class="spacer"></div>
+                                        <div>
+                                            <p><span><img style="width:20%;" src="~/Images/icons/Contact.svg" alt="Contact Us"></span>01527 309002</p>
+                                        </div>
+                                        <div class="spacer"></div>
+                                        <div>
+                                            <p><span><img style="width:18%;" src="~/Images/icons/Request_a_callback.svg" alt="Request call back"></span>Request call back</p>
+                                        </div>
+                                        <div class="spacer"></div>
+                                        <div>
+                                            <p><span><img style="width:18%;" src="~/Images/icons/Request_a_viewing.svg" alt="request viewing"></span>Request viewing</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            @{
+                                                PageNumber = PageNumber + 1;
+                                            }
+
+                                            <p class="page_no">Page @PageNumber</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end footer section-->
+                            </div>
+                        </div>
+                        <!--end house details page-->
+                    }
+                }
+
+            }
+
+            @{
+                if (Model.LstDevSpecifications.Count() > 0)
+                {
+                    foreach (var spec in Model.LstDevSpecifications)
+                    {
+                        <!--specification page-->
+                        <div class="page">
+                            <div class="b-container-fluid">
+                                <div class="row header header-bg-color mx-0">
+                                    <div class="col-8">
+                                        <h2>Specification</h2>
+                                        <h3 class="sub-header"><span>@Model.ObjDevDetails.DevName</span>, @Model.ObjDevAddress.Town</h3>
+                                    </div>
+                                    <div class="col-4 d-flex justify-content-end">
+                                        <img class="header-logo" src="https://www.bovishomes.co.uk/images/brochure-main-header-logo.png">
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 content-body text-center p-0">
+                                    <div class="row" style="margin:0 auto">
+
+                                        <img style="width:95%" src="@Model.BaseUrl@Model.LstDevSpecifications.First().DevSpecImageUrl" alt="@Model.LstDevSpecifications.First().DevSpecName" />
+
+                                    </div>
+                                </div>
+                                <!--footer section-->
+                                <div class="flex-shrink-1">
+                                    <p class="footer-content">note: The specification and features shown in this brochure were correct at time of PDF creation. Bovis Homes is continually reviewing and updating the specification on all housetypes and therefore reserves the right to change specification details. For full details regarding current specification and finishes, for the plots you are interested in, please refer to our sales advisor. PDF brochure @DateTime.Now.ToString("HH:MM") on @DateTime.Today.ToString("dd-MMM-yyyy")</p>
+                                    <div class="row footer footer-style">
+                                        <div>
+                                            <p class="font-weight-light">@Model.ObjDevOpeningHours.ShortDisplay</p>
+                                        </div>
+                                        <div class="spacer"></div>
+                                        <div>
+                                            <p><a href="tel:@Model.ObjDevAddress.Telephone" style="color:black"><span><img style="width:20%;" src="~/Images/icons/Contact.svg" alt="Contact Us"></span>@Model.ObjDevAddress.Telephone</a></p>
+                                        </div>
+                                        <div class="spacer"></div>
+                                        <div>
+                                            <p><span><a href="@Model.ObjDevBrochure.CallBackUrl" target="_blank" style="color:black"><img style="width:18%;" src="~/Images/icons/Request_a_callback.svg" alt="Request call back">Request call back</a></span></p>
+                                        </div>
+                                        <div class="spacer"></div>
+                                        <div>
+                                            <p><span><a href="@Model.ObjDevBrochure.ViewingUrl" target="_blank" style="color:black"><img style="width:18%;" src="~/Images/icons/Request_a_viewing.svg" alt="Request viewing">Request viewing</a></span></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            @{
+                                                PageNumber = PageNumber + 1;
+                                            }
+                                            <p class="page_no">Page @PageNumber</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end footer section-->
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+            <!--start 6 page-->
+            <div class="page directions-page">
+                <div class="b-container-fluid">
+                    <div class="row header header-bg-color mx-0">
+                        <div class="col-8">
+                            <h2>Directions</h2>
+                            <h3 class="sub-header"><span>@Model.ObjDevDetails.DevName</span>, @Model.ObjDevAddress.Town</h3>
+                        </div>
+                        <div class="col-4 d-flex justify-content-end">
+                            <img class="header-logo" src="https://www.bovishomes.co.uk/images/brochure-main-header-logo.png">
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 content-body directions">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row  my-15">
+                                    <div class="col-6">
+                                        <div class="row address-detail">
+                                            <!--address-->
+                                            <div class="col-6">
+                                                <h5>Address</h5>
+                                                <hr>
+
+                                                @{
+                                                    if (!string.IsNullOrWhiteSpace(Model.ObjDevDetails.DevName))
+                                                    {
+                                                        <p>@Model.ObjDevDetails.DevName,</p>
+                                                    }
+                                                    if (!string.IsNullOrWhiteSpace(Model.ObjDevAddress.RoadName))
+                                                    {
+                                                        <p>@Model.ObjDevAddress.RoadName,</p>
+                                                    }
+                                                    if (!string.IsNullOrWhiteSpace(Model.ObjDevAddress.Address1))
+                                                    {
+                                                        <p>@Model.ObjDevAddress.Address1,</p>
+                                                    }
+                                                    if (!string.IsNullOrWhiteSpace(Model.ObjDevAddress.Address2))
+                                                    {
+                                                        <p>@Model.ObjDevAddress.Address2,</p>
+                                                    }
+                                                    if (!string.IsNullOrWhiteSpace(Model.ObjDevAddress.Town))
+                                                    {
+                                                        <p>@Model.ObjDevAddress.Town,</p>
+                                                    }
+                                                    if (!string.IsNullOrWhiteSpace(Model.ObjDevAddress.County))
+                                                    {
+                                                        <p>@Model.ObjDevAddress.County,</p>
+                                                    }
+                                                    if (!string.IsNullOrWhiteSpace(Model.ObjDevAddress.PostCode))
+                                                    {
+                                                        <p>@Model.ObjDevAddress.PostCode</p>
+                                                    }
+                                                }
+                                            </div>
+                                            <!--satnav-->
+                                            <div class="col-6 pl-30">
+
+                                                @{
+                                                    if (!string.IsNullOrWhiteSpace(@Model.ObjDevAddress.PostCode))
+                                                    {
+                                                        <h5>Satnav postcode:</h5>
+                                                        <hr>
+                                                        <p>For directions via satnav, please use the below postcode:</p>
+                                                        <p class="font-weight-bold">@Model.ObjDevAddress.SatNavPostCode</p>
+                                                    }
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @{
+                                        if (!string.IsNullOrWhiteSpace(@Model.ObjDevOpeningHours.Monday))
+                                        {
+                                            <div class="col-6 d-flex justify-content-center flex-column px-25">
+                                                <div class="p-15 pb-20" style="background-color:#EBEAE4; border-radius:5px;">
+                                                    <table class="opening-hours-table mr-15">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Mon:</td>
+                                                                <td>@Model.ObjDevOpeningHours.Monday</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tue:</td>
+                                                                <td>@Model.ObjDevOpeningHours.Tuesday</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Wed:</td>
+                                                                <td>@Model.ObjDevOpeningHours.Wednesday</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Thur:</td>
+                                                                <td>@Model.ObjDevOpeningHours.Thursday</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <table class="opening-hours-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Fri:</td>
+                                                                <td>@Model.ObjDevOpeningHours.Friday</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Sat:</td>
+                                                                <td>@Model.ObjDevOpeningHours.Saturday</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Sun:</td>
+                                                                <td>@Model.ObjDevOpeningHours.Sunday</td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <a class="btn btn-primary btn-solid mt-n15 mx-auto" style="font-size:10px;" href="@Model.BaseUrl@Model.ObjDevBrochure.ViewingUrl" role="button">Request a viewing</a>
+                                            </div>
+                                        }
+                                    }
+
+
+                                </div>
+
+                                @{
+                                    if (Model.LstDevDirections.Count() > 0)
+                                    {
+                                        <div class="row">
+                                            <div class="col-12 pb-10">
+                                                <h4>Maps:</h4>
+                                                <hr>
+                                            </div>
+                                            <div class="col-6">
+                                                <img class="mt-n20" style="width:90%" src="@Model.BaseUrl@Model.LstDevDirections.First().DevDirectionMapUrl" alt="Directions map for @Model.ObjDevDetails.DevName">
+                                            </div>
+                                            <div class="col-6 d-flex flex-column">
+
+
+                                                <iframe src="https://maps.google.com/maps?q=@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude&hl=es;z=14&amp;output=embed" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="d-block"></iframe>
+
+                                                <a class="btn btn-primary btn-solid mt-n15 mx-auto" style="font-size:10px; z-index:20" href="http://www.google.com/maps/place/@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude" role="button" target="_blank">Open google map</a>
+                                            </div>
+                                        </div>
+                                        <div class="row my-40">
+                                            <!--opening hours-->
+                                            <div class="col-6">
+                                                <h4>@Model.LstDevDirections.Where(x => x.SortOrder == 1).First().DevDirectionHeader:</h4>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <ul>
+
+                                                            @{
+                                                                var OrgDirectionsList = Model.LstDevDirections.Where(x => x.SortOrder == 1).First().DevDirectionBody.Replace("  ", System.Environment.NewLine);
+                                                                string[] lines = OrgDirectionsList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+                                                                foreach (string line in lines)
+                                                                {
+                                                                    <li>@line</li>
+                                                                }
+                                                            }
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Contact us-->
+                                            <div class="col-6 pl-30">
+                                                <h4>@Model.LstDevDirections.Where(x => x.SortOrder == 2).First().DevDirectionHeader:</h4>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <ul>
+
+                                                            @{
+                                                                var OrgDirectionsList2 = Model.LstDevDirections.Where(x => x.SortOrder == 2).First().DevDirectionBody.Replace("  ", System.Environment.NewLine);
+                                                                string[] lines2 = OrgDirectionsList2.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+                                                                foreach (string line in lines)
+                                                                {
+                                                                    <li>@line</li>
+                                                                }
+                                                            }
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!--footer section-->
+                    <div class="flex-shrink-1">
+                        <p class="footer-content">note: The specification and features shown in this brochure were correct at time of PDF creation. Bovis Homes is continually reviewing and updating the specification on all housetypes and therefore reserves the right to change specification details. For full details regarding current specification and finishes, for the plots you are interested in, please refer to our sales advisor. PDF brochure @DateTime.Now.ToString("HH:MM") on @DateTime.Today.ToString("dd-MMM-yyyy")</p>
+                        <div class="row footer footer-style">
+                            <div>
+                                <p class="font-weight-light">@Model.ObjDevOpeningHours.ShortDisplay</p>
+                            </div>
+                            <div class="spacer"></div>
+                            <div>
+                                <p><a href="tel:@Model.ObjDevAddress.Telephone" style="color:black"><span><img style="width:20%;" src="~/Images/icons/Contact.svg" alt="Contact Us"></span>@Model.ObjDevAddress.Telephone</a></p>
+                            </div>
+                            <div class="spacer"></div>
+                            <div>
+                                <p><span><a href="@Model.ObjDevBrochure.CallBackUrl" target="_blank" style="color:black"><img style="width:18%;" src="~/Images/icons/Request_a_callback.svg" alt="Request call back">Request call back</a></span></p>
+                            </div>
+                            <div class="spacer"></div>
+                            <div>
+                                <p><span><a href="@Model.ObjDevBrochure.ViewingUrl" target="_blank" style="color:black"><img style="width:18%;" src="~/Images/icons/Request_a_viewing.svg" alt="Request viewing">Request viewing</a></span></p>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    @{
+                                        PageNumber = PageNumber + 1;
+                                    }
+                                    <p class="page_no">Page @PageNumber</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end footer section-->
+                    </div>
+                </div>
+
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+            </div>
+
+            <div class="page why-buy-page">
+                <div class="b-container-fluid">
+                    <div class="row header header-bg-color mx-0">
+                        <div class="col-8">
+                            <h2>Why buy new?</h2>
+                            <h3 class="sub-header"><span>@Model.ObjDevDetails.DevName</span>, @Model.ObjDevAddress.Town</h3>
+                        </div>
+                        <div class="col-4 d-flex justify-content-end">
+                            <img class="header-logo" src="https://www.bovishomes.co.uk/images/brochure-main-header-logo.png">
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 content-body">
+                        <div class="row">
+                            <div class="col-10 mt-30">
+                                <p>
+                                    Built to suit a modern lifestyle, you get more for your money with a newly built, energy-efficient home.
+                                    Here are just ten top reasons why brand new is best.
+                                </p>
+                            </div>
+                            <div class="col-12">
+                                <div class="row my-40">
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <ul>
+                                                    <li><img src="~/images/pound-icon.jpg"><div><p>Purchase assistance</p><p>Helping you buy your dream home</p></div></li>
+                                                    <li><img src="~/images/home-icon.jpg"><div><p>Blank canvas</p><p>A bright, fresh new home untouched by <br> previous owners</p></div></li>
+                                                    <li><img src="~/images/energy-icon.jpg"><div><p>Energy-efficient</p><p>Saving you money on your bills as well as the environment</p></div></li>
+                                                    <li><img src="~/images/lock-icon.jpg"><div><p>Peace of mind</p><p>No unexpected costs with a 10 year NHBC warranty</p></div></li>
+                                                    <li><img src="~/images/chain-icon.jpg"><div><p>Chain free</p><p>No need to wait for the existing owners to move out</p></div></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pl-30">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <ul>
+                                                    <li><img src="~/images/plus-icon.jpg"><div><p>Your choice</p><p>Choice of contemporary kitchen designs</p></div></li>
+                                                    <li><img src="~/images/design-icon.jpg"><div><p>Modern design</p><p>Comforts and layouts to suit a modern lifestyle</p></div></li>
+                                                    <li><img src="~/images/quality-icon.jpg"><div><p>Home of quality</p><p>Built to the highest standards complying with the latest building regulations</p></div></li>
+                                                    <li><img src="~/images/choice-icon.jpg"><div><p>Spoilt for choice</p><p>A variety of housetypes and living spaces to suit you and your family</p></div></li>
+                                                    <li><img src="~/images/maintenance-icon.jpg"><div><p>Maintenance free</p><p>All the work is done for you, so you can relax at the weekends</p></div></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row p-0 mx-0 my-20 gov-bodies">
+                                        <div class="col-12 d-flex">
+                                            <div class="p-0" style="width:15%">
+                                                <img class="w-100" src="~/images/nhbc.jpg" alt="nhbc logo">
+                                            </div>
+                                            <div class="px-15 align-self-center" style="width:80%">
+                                                <p class="mb-5" style="font-size:11px; line-height:16px;">To give you peace of mind in your brand new Bovis Home, for the first two years after completion your new home is covered by your Bovis Homes warranty. In addition, the NHBC 10-year warranty also runs from your completion day.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex">
+                                            <div class="p-0" style="width:15%">
+                                                <img class="w-100" src="~/images/consumer.jpg" alt="consumer logo">
+                                            </div>
+                                            <div class="px-15 align-self-center" style="width:80%">
+
+                                                <p class="mb-5" style="font-size:11px; line-height:16px;">Bovis Homes is a participant in the Consumer Code for Home Builders. The Consumer Code sets mandatory requirements that all Home Builders must meet in their marketing and selling of homes and their after-sales customer service. Further information can be found at <a class="link-txt-color" href="www.consumercode.co.uk" target="_blank">www.consumercode.co.uk</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex">
+                                            <div class="p-0 mx-auto" style="width: 10%;">
+                                                <img class="w-100" src="~/images/hbf.jpg" alt="hbf">
+                                            </div>
+                                            <div class="px-15 align-self-center" style="width: 85%;">
+                                                <p class="mb-5" style="font-size:11px; line-height:16px;">Over 90% of our home owners would recommend Bovis Homes to a friend.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--footer section-->
+                    <div class="flex-shrink-1">
+                        <p class="footer-content">note: The specification and features shown in this brochure were correct at time of PDF creation. Bovis Homes is continually reviewing and updating the specification on all housetypes and therefore reserves the right to change specification details. For full details regarding current specification and finishes, for the plots you are interested in, please refer to our sales advisor. PDF brochure @DateTime.Now.ToString("HH:MM") on @DateTime.Today.ToString("dd-MMM-yyyy")</p>
+                        <div class="row footer footer-style">
+                            <div>
+                                <p class="font-weight-light">@Model.ObjDevOpeningHours.ShortDisplay</p>
+                            </div>
+                            <div class="spacer"></div>
+                            <div>
+                                <p><a href="tel:@Model.ObjDevAddress.Telephone" style="color:black"><span><img style="width:20%;" src="~/Images/icons/Contact.svg" alt="Contact Us"></span>@Model.ObjDevAddress.Telephone</a></p>
+                            </div>
+                            <div class="spacer"></div>
+                            <div>
+                                <p><span><a href="@Model.ObjDevBrochure.CallBackUrl" target="_blank" style="color:black"><img style="width:18%;" src="~/Images/icons/Request_a_callback.svg" alt="Request call back">Request call back</a></span></p>
+                            </div>
+                            <div class="spacer"></div>
+                            <div>
+                                <p><span><a href="@Model.ObjDevBrochure.ViewingUrl" target="_blank" style="color:black"><img style="width:18%;" src="~/Images/icons/Request_a_viewing.svg" alt="Request viewing">Request viewing</a></span></p>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    @{
+                                        PageNumber = PageNumber + 1;
+                                    }
+                                    <p class="page_no">Page @PageNumber</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end footer section-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div style="width:21cm; margin:0 auto;">
+
+
+            <div class="mt-3">
+                <a href="@Model.PdfUrl.ToLower().Trim()" class="btn text-white" style="background-color:#003A5D" target="_blank" title="Open Brochure Pdf in separate tab">View Brochure Pdf</a>
+                <button type="submit" class="btn btn-primary" style="background-color:purple">Print Brochure Pdf</button>
+            </div>
+
+
+        </div>*@
+    </form>
+
+</body>
+</html>
+
+
+

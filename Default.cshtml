@@ -1,0 +1,183 @@
+﻿
+@model Vistry_Homes_Sales_Website_CMS.ViewModels.VMBrochureHouse
+@using System.Globalization;
+
+<div class="row-3">
+    <div class="col-xs-6">
+        <div class="row-3">
+            <div class="col-xs-12">
+                <img class="w-100" src="@Model.ObjBrochureHouse.HouseImageUrl" alt="house pic">
+                <div class="position-absolute primary-bg-color text-white px-10 py-5 border-around-opposite" style="top:0%; right:4%;">
+
+                    @{
+                        if (!string.IsNullOrWhiteSpace(@Model.ObjBrochureHouse.VirtualTourUrl))
+                        {
+                            <a href="@Model.ObjBrochureHouse.VirtualTourUrl" class="d-inline-block text-white mb-0 font-weight-bold px-10" target="_blank">Virtual tour</a>
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(@Model.ObjBrochureHouse.VideoUrl))
+                        {
+                            string FullVideoUrl = "https://player.vimeo.com/video/" + Model.ObjBrochureHouse.VideoUrl;
+
+                            <span>|</span>
+                            <a href="@FullVideoUrl" class="d-inline-block text-white mb-0 px-10 font-weight-bold" target="_blank">Play video</a>
+                        }
+                    }
+
+                </div>
+            </div>
+            <div class="col-xs-12 ">
+                <div class="primary-bg-color prop-info rounded-bottom">
+                    <div>
+                        <p class="font-weight-bold">@Model.ObjBrochureHouse.HwSquareFoot</p>
+                        <p class="font-weight-light">Square feet</p>
+                    </div>
+                    <div class="spacer_house"></div>
+                    <div>
+                        <p class="font-weight-bold">@Model.ObjBrochureHouse.HwEnSuiteCount</p>
+                        <p class="font-weight-light">En-suite</p>
+                    </div>
+                    <div class="spacer_house"></div>
+                    <div>
+                        <p class="font-weight-bold">@Model.ObjBrochureHouse.HwBedroomCount</p>
+                        <p class="font-weight-light">Bedrooms</p>
+                    </div>
+                    <div class="spacer_house"></div>
+                    <div>
+                        <p class="font-weight-bold">@Model.ObjBrochureHouse.HwReceptionsCount</p>
+                        <p class="font-weight-light">Reception Rooms</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+
+                @{
+                    string PlotPrice = "";
+                    if (Model.ObjBrochureHouse.HwGuidePrice == 0)
+                    {
+                        PlotPrice = "P.O.A";
+                    }
+                    else
+                    {
+                        PlotPrice = "From  £" + Convert.ToDecimal(Model.ObjBrochureHouse.HwGuidePrice).ToString("0,##");
+                    }
+                }
+
+                <h3 class="mt-15" style="font-size:15px">@Model.ObjBrochureHouse.HouseName -@PlotPrice - @Model.ObjBrochureHouse.HwBedroomCount bed @Model.ObjBrochureHouse.HwPropertyType</h3>
+                <hr style="margin-bottom:0.4rem;">
+                <div class="row-3">
+
+                    <div class="col-xs-6">
+                        <ul>
+                            @{
+                                int HalfOfUsps = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Model.LstBrochureUsps.Count()) / 2));
+
+                                foreach (var uspItem in Model.LstBrochureUsps.Where(x => x.SortOrder <= HalfOfUsps).OrderBy(x => x.SortOrder))
+                                {
+                                    <li>@uspItem.USPDesc</li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-xs-6">
+                        <ul>
+
+                            @{
+                                foreach (var uspItem in Model.LstBrochureUsps.Where(x => x.SortOrder > HalfOfUsps).OrderBy(x => x.SortOrder))
+                                {
+                                    <li>@uspItem.USPDesc</li>
+                                }
+                            }
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="row-3">
+                    <div class="col-12 d-none">
+                        <div class="special-offer px-10 py-10">
+                            <h4 class="primary-txt-color">There is a special offer available on this plot!</h4>
+                            <h3 class="text-white">Until 1st April 2020 – see website for details.</h3>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 dimensions mt-15">
+
+                        @{
+                            var floors = Model.LstBrochureRoomDimensions.GroupBy(e => e.RdFloor);
+
+                            foreach (var floor in floors)
+                            {
+                                <h4 class="">@CultureInfo.CurrentCulture.TextInfo.ToTitleCase(floor.Key.ToLower().Trim()) floor</h4>
+
+                                <table class="table">
+                                    <tbody>
+
+                                        @foreach (var item in Model.LstBrochureRoomDimensions)
+                                        {
+                                            if (item.RdFloor.ToLower().Trim() == floor.Key.ToLower().Trim())
+                                            {
+
+                                                <tr>
+                                                    <td>@item.RdRoom</td>
+                                                    <td>@item.RdMeters</td>
+                                                    <td>@item.RdFeet</td>
+                                                </tr>
+
+
+                                            }
+
+                                        }
+
+
+                                    </tbody>
+                                </table>
+
+                                <hr />
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="layout_pics">
+
+            @{
+                var floorsOnly = Model.LstBrochureRoomDimensions.GroupBy(y => y.RdFloor);  
+                int NoOfFloors = floorsOnly.Count();
+
+                foreach (var floorOnly in floorsOnly)
+                {
+                    var groupedFloor = Model.LstBrochureRoomDimensions.Where(x => x.RdFloor == floorOnly.Key.ToString()).First();
+                    <img style="max-width: @(NoOfFloors == 2 ? "70%" : "auto"); height: @(NoOfFloors == 3 ? "7cm" : "auto")" src="@groupedFloor.ImageUrl" alt="@floorOnly.Key floor" class="img-fluid img-floor">
+                }
+            }
+
+        </div>
+        <div class="key-table">
+            <h4 class="mb-5">Key:</h4>
+            <table class="mb-5">
+                <tbody>
+                    <tr>
+                        <td>ovn</td>
+                        <td>oven</td>
+                        <td>dw/ds</td>
+                        <td>dishwasher space</td>
+                    </tr>
+                    <tr>
+                        <td>h</td>
+                        <td>hob</td>
+                        <td>ffzr/for/f/ffzs</td>
+                        <td>fridge freezer space</td>
+                    </tr>
+                    <tr>
+                        <td>wm/ws</td>
+                        <td>washing machine space</td>
+                        <td>ts</td>
+                        <td>tumble dryer space</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
