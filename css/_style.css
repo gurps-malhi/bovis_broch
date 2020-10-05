@@ -459,7 +459,7 @@ p{
     font-weight: normal;
     margin: 5px 5px 8px;
     line-height: 10px;
-    letter-spacing: 0.3em;
+    letter-spacing: 1px;
 }
 
 .page_no{
