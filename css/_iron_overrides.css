@@ -200,3 +200,9 @@
 .reduce-indent{
     padding-inline-start: 0px !important;
 }
+
+.btn-solid__centralise{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
