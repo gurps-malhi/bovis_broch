@@ -298,8 +298,9 @@ p{
 .home-101-page .key-table tr td:nth-child(2){
     border-right:4px solid #fff;
  } 
-.home-101-page .key-table tr td{
-    padding:4px 5px;
+ .home-101-page .key-table tr td {
+    padding: 4px 5px;
+    letter-spacing: 0.3em;
 }
 
 .home-101-page hr{
@@ -436,7 +437,7 @@ p{
     color: #EBEAE4;
     height: 30px;
     border-left: 1px solid #EBEAE4;
-    margin: 0px 3em;
+    margin: 0px 2.8em;
 }
 
 .footer img{
@@ -453,12 +454,12 @@ p{
     width: 100%;
 }
 
-.footer-content{
+.footer-content {
     font-size: 8px;
-    font-weight:normal;
+    font-weight: normal;
     margin: 5px 5px 8px;
-    line-height:10px;
-
+    line-height: 10px;
+    letter-spacing: 0.3em;
 }
 
 .page_no{
