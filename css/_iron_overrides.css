@@ -170,6 +170,7 @@
   .fixed-bottom-footer{
     position:absolute;
     bottom:0%;
+    width: 100%;
   }
   .content-body{
       position:relative;
@@ -189,4 +190,9 @@
 
 .prop-info{
     padding: 0px 1em;
+}
+
+.centralise__img{
+    margin:0 auto;
+    display:block;
 }

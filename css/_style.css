@@ -24,7 +24,7 @@ body{
     position: relative;
     overflow: hidden;
     width: 8.27in;
-    height: 13in;
+    height: 14in;
     font-family: Arial,Helvetica,sans-serif;
     padding:30px 40px;
     color:#003A5D;
@@ -444,12 +444,13 @@ p{
 }
 
 .footer-style{
-    background-color: rgba(235, 234, 228, 0.2);
-    margin-left: 0px;
-    margin-right: 0px;
-    align-items: center;
-    padding: 10px 16px;
+    background-color:rgba(235, 234, 228, 0.2);
+    margin-left:0px;
+    margin-right:0px;
+    align-items:center;
+    padding:10px 1em;
     margin-top: 10px;
+    width: 100%;
 }
 
 .footer-content{
