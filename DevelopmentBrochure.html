@@ -597,13 +597,24 @@
                                                 <h4>Maps:</h4>
                                                 <hr>
                                             </div>
+                                            <!-- <table class="col-12">
+                                                <tr>
+                                                    <td>
+                                                        <img class="mt-n20" style="width:90%" src="@Model.BaseUrl@Model.LstDevDirections.First().DevDirectionMapUrl" alt="Directions map for @Model.ObjDevDetails.DevName">
+                                                    </td>
+                                                    <td class="pl-4">
+                                                        <iframe src="https://maps.google.com/maps?q=@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude&hl=es;z=14&amp;output=embed" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="d-block"></iframe>
+                                                        <a class="btn btn-primary btn-solid mt-n15 w-50 btn-solid__map_centralise" style="font-size:10px; z-index:20" href="http://www.google.com/maps/place/@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude" role="button" target="_blank">Open google map</a>
+                                                    </td>
+                                                </tr>
+                                            </table> -->
                                             <div class="col-6">
                                                 <img class="mt-n20" style="width:90%" src="@Model.BaseUrl@Model.LstDevDirections.First().DevDirectionMapUrl" alt="Directions map for @Model.ObjDevDetails.DevName">
                                             </div>
-                                            <!-- <div class="col-6">
-                                                <iframe src="https://maps.google.com/maps?q=@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude&hl=es;z=14&amp;output=embed" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="d-block"></iframe>
+                                            <div class="col-6">
+                                                <iframe src="https://maps.google.com/maps?q=@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude&hl=es;z=14&amp;output=embed" height="100%" frameborder="0" style="border:0; display:block;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                                                 <a class="btn btn-primary btn-solid mt-n15 w-50 btn-solid__map_centralise" style="font-size:10px; z-index:20" href="http://www.google.com/maps/place/@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude" role="button" target="_blank">Open google map</a>
-                                            </div> -->
+                                            </div>
                                         </div>
                                         <div class="row my-40">
                                             <!--opening hours-->
