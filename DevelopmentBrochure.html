@@ -117,18 +117,44 @@
                                 <h4>Contact us:</h4>
                                 <hr>
                                 <div class="row">
-                                    <div class="col-12">
-                                        <img class="d-inline contact_icons" src="~/Images/icons/Agents.svg" alt="agents icon">
+                                    <table class="col-6 contactus_table">
+                                        <tr>
+                                            <td>
+                                                <img class="contact_icons" src="~/Images/icons/Agents.jpg" alt="agents icon">
+                                            </td>
+                                            <td>
+                                                <p class="contact-us-p">@Model.ObjDevAddress.SalesAdvisor</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                            <img class="contact_icons" src="~/Images/icons/Contact.jpg" alt="contact icon">
+                                            </td>
+                                            <td>
+                                            <p class="contact-us-p">@Model.ObjDevAddress.Telephone</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                            <img class="contact_icons" src="~/Images/icons/Directions.jpg" alt="directions icon">
+                                            </td>
+                                            <td>
+                                            <p class="contact-us-p font-weight-bold"><a href="@Model.ObjDevBrochure.DevDirectionsUrl" class="link-txt-color" target="_blank"> Get directions</a></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- <div class="col-12">
+                                        <img class="d-inline contact_icons" src="~/Images/icons/Agents.jpg" alt="agents icon">
                                         <p class="contact-us-p">@Model.ObjDevAddress.SalesAdvisor</p>
                                     </div>
                                     <div class="col-12">
-                                        <img class="d-inline contact_icons" src="~/Images/icons/Contact.svg" alt="contact icon">
+                                        <img class="d-inline contact_icons" src="~/Images/icons/Contact.jpg" alt="contact icon">
                                         <p class="contact-us-p">@Model.ObjDevAddress.Telephone</p>
                                     </div>
                                     <div class="col-12">
-                                        <img class="d-inline contact_icons" src="~/Images/icons/Directions.svg" alt="directions icon">
+                                        <img class="d-inline contact_icons" src="~/Images/icons/Directions.jpg" alt="directions icon">
                                         <p class="contact-us-p font-weight-bold"><a href="@Model.ObjDevBrochure.DevDirectionsUrl" class="link-txt-color" target="_blank"> Get directions</a></p>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -515,7 +541,7 @@
                                     @{
                                         if (!string.IsNullOrWhiteSpace(@Model.ObjDevOpeningHours.Monday))
                                         {
-                                            <div class="col-6 px-25">
+                                            <div class="col-6">
                                                 <div class="p-15 pb-20" style="background-color:#EBEAE4; border-radius:5px;">
                                                     <table class="opening-hours-table mr-15">
                                                         <tbody>
@@ -575,10 +601,7 @@
                                                 <img class="mt-n20" style="width:90%" src="@Model.BaseUrl@Model.LstDevDirections.First().DevDirectionMapUrl" alt="Directions map for @Model.ObjDevDetails.DevName">
                                             </div>
                                             <div class="col-6">
-
-
                                                 <iframe src="https://maps.google.com/maps?q=@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude&hl=es;z=14&amp;output=embed" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="d-block"></iframe>
-
                                                 <a class="btn btn-primary btn-solid mt-n15 w-50 btn-solid__map_centralise" style="font-size:10px; z-index:20" href="http://www.google.com/maps/place/@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude" role="button" target="_blank">Open google map</a>
                                             </div>
                                         </div>

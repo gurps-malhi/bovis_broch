@@ -142,13 +142,20 @@ p{
 }
 
 .contact-us-p{
-    display:inline-block;
-    margin-left:10px;
+    display: inline-block;
+    margin-left: -5px;
+    margin-bottom: 0px;
 }
 
 .contact_icons{
-    width:6%;
+    width: 38%;
+    margin-left: 11px;
 }
+
+.contactus_table tr td{
+    padding-bottom:10px;
+}
+
 .btn-solid{
     background-color:#003A5D;
     border-radius:20px;
@@ -455,7 +462,7 @@ p{
 }
 
 .footer-content {
-    font-size: 8px;
+    font-size: 9px;
     font-weight: normal;
     margin: 5px 5px 8px;
     line-height: 10px;
