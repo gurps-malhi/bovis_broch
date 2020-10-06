@@ -614,7 +614,7 @@
                                                 <img class="mt-n20" style="width:90%" src="@Model.BaseUrl@Model.LstDevDirections.First().DevDirectionMapUrl" alt="Directions map for @Model.ObjDevDetails.DevName">
                                             </div>
                                             <div style="width:49%; display:float-left; margin-right:1%">
-                                                <iframe src="https://maps.google.com/maps?q=@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude&hl=es;z=14&amp;output=embed" height="100%" frameborder="0" style="border:0; display:block;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                                <iframe src="https://maps.google.com/maps?q=@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude&hl=es;z=14&amp;output=embed" height="100%" width="100%" frameborder="0" style="border:0; display:block;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                                                 <a class="btn btn-primary btn-solid mt-n15 w-50 btn-solid__map_centralise" style="font-size:10px; z-index:20" href="http://www.google.com/maps/place/@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude" role="button" target="_blank">Open google map</a>
                                             </div>
                                             <!-- <div class="col-6">
