@@ -211,3 +211,22 @@
     margin-left:24%;
   
   }
+
+  .why-buy-icon-tbl img {
+    width: 40px;
+    margin: auto;
+  }
+  
+  .why-buy-icon-tbl p{
+    margin-bottom:0px;
+  }
+  
+  .why-buy-icon-tbl td p:first-child {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .why-buy-icon-tbl td{
+    padding-bottom: 1em;
+    padding-right: 20px;
+  }
