@@ -611,7 +611,7 @@
                                         </div>
                                         <div>
                                             <div style="width:49%; display:float-left; margin-left:1%">
-                                                <img class="mt-n20" style="width:90%" src="~/images/pound-icon.jpg" alt="Directions map for @Model.ObjDevDetails.DevName">
+                                                <img class="mt-n20" style="width:90%" src="@Model.BaseUrl@Model.LstDevDirections.First().DevDirectionMapUrl" alt="Directions map for @Model.ObjDevDetails.DevName">
                                             </div>
                                             <div style="width:49%; display:float-left; margin-right:1%">
                                                 <iframe src="https://maps.google.com/maps?q=@Model.ObjDevDetails.DevLatitude,@Model.ObjDevDetails.DevLongitude&hl=es;z=14&amp;output=embed" height="100%" frameborder="0" style="border:0; display:block;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
