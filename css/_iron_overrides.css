@@ -277,7 +277,7 @@ table.bulletpoints__housetype tr td span:before, table.bulletpoints__directions 
 
   .bulletpoints__directions{
     float:left;
-    width: 100%;
+    width: 95%;
     border-collapse:separate;
   }
 
