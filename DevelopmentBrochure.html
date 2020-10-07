@@ -627,7 +627,7 @@
                                             <div class="col-6">
                                                 <h4>@Model.LstDevDirections.Where(x => x.SortOrder == 1).First().DevDirectionHeader:</h4>
                                                 <hr class="mb-2">
-                                                <table class="bulletpoints__directions">
+                                                <table class="bulletpoints__housetype bulletpoints__directions">
                                                         @{
                                                             var OrgDirectionsList = Model.LstDevDirections.Where(x => x.SortOrder == 1).First().DevDirectionBody.Replace("  ", System.Environment.NewLine);
                                                             string[] lines = OrgDirectionsList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
@@ -667,7 +667,7 @@
                                             <div class="col-6 pl-30">
                                                 <h4>@Model.LstDevDirections.Where(x => x.SortOrder == 2).First().DevDirectionHeader:</h4>
                                                 <hr>
-                                                <table class="bulletpoints__directions">
+                                                <table class="bulletpoints__housetype bulletpoints__directions">
                                                     @{
                                                         var OrgDirectionsList2 = Model.LstDevDirections.Where(x => x.SortOrder == 2).First().DevDirectionBody.Replace("  ", System.Environment.NewLine);
                                                         string[] lines2 = OrgDirectionsList2.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
