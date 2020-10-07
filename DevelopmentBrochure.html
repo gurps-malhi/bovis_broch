@@ -624,8 +624,25 @@
                                             </div> 
                                         </div> -->
                                         <div class="row my-40">
-                                            <!--opening hours-->
                                             <div class="col-6">
+                                                <h4>@Model.LstDevDirections.Where(x => x.SortOrder == 1).First().DevDirectionHeader:</h4>
+                                                <hr class="mb-2">
+                                                <table class="bulletpoints__directions">
+                                                        @{
+                                                            var OrgDirectionsList = Model.LstDevDirections.Where(x => x.SortOrder == 1).First().DevDirectionBody.Replace("  ", System.Environment.NewLine);
+                                                            string[] lines = OrgDirectionsList.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+                                                            foreach (string line in lines)
+                                                            {
+                                                                <tr>
+                                                                    <td><span><p>@line</p></span></td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                </table>
+                                            </div>
+                                            <!--directions-->
+                                            <!-- <div class="col-6">
                                                 <h4>@Model.LstDevDirections.Where(x => x.SortOrder == 1).First().DevDirectionHeader:</h4>
                                                 <hr>
                                                 <div class="row">
@@ -645,28 +662,24 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <!--Contact us-->
                                             <div class="col-6 pl-30">
                                                 <h4>@Model.LstDevDirections.Where(x => x.SortOrder == 2).First().DevDirectionHeader:</h4>
                                                 <hr>
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <ul>
+                                                <table class="bulletpoints__directions">
+                                                    @{
+                                                        var OrgDirectionsList2 = Model.LstDevDirections.Where(x => x.SortOrder == 2).First().DevDirectionBody.Replace("  ", System.Environment.NewLine);
+                                                        string[] lines2 = OrgDirectionsList2.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
-                                                            @{
-                                                                var OrgDirectionsList2 = Model.LstDevDirections.Where(x => x.SortOrder == 2).First().DevDirectionBody.Replace("  ", System.Environment.NewLine);
-                                                                string[] lines2 = OrgDirectionsList2.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-
-                                                                foreach (string line in lines)
-                                                                {
-                                                                    <li>@line</li>
-                                                                }
-                                                            }
-
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                                        foreach (string line in lines)
+                                                        {   
+                                                            <tr>
+                                                                <td><span><p>@line</p></span></td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                            </table>
                                             </div>
                                         </div>
                                     }
@@ -735,7 +748,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="mx-0 my-10">
+                        <div class="mx-0 my-10" style="width:100%">
                             <table class="why-buy-icon-tbl" style="margin-right:1%">
                                 <tr>
                                   <td>
@@ -841,7 +854,7 @@
                             </div> -->
                         </div>
                         <div class="p-0 mx-0 my-20 gov-bodies">
-                            <div class="w-100">
+                            <div class="w-100 mb-4">
                                 <div class="p-0 float-left mr-4" style="width:15%">
                                     <img class="w-100" src="~/images/nhbc.jpg" alt="nhbc logo">
                                 </div>
@@ -849,7 +862,7 @@
                                     <p class="mb-5" style="font-size:11px; line-height:16px;">To give you peace of mind in your brand new Bovis Home, for the first two years after completion your new home is covered by your Bovis Homes warranty. In addition, the NHBC 10-year warranty also runs from your completion day.</p>
                                 </div>
                             </div>
-                            <div class="w-100">
+                            <div class="w-100 mb-4">
                                 <div class="p-0 float-left mr-4" style="width:15%">
                                     <img class="w-100" src="~/images/consumer.jpg" alt="consumer logo">
                                 </div>
@@ -857,7 +870,7 @@
                                     <p class="mb-5" style="font-size:11px; line-height:16px;">Bovis Homes is a participant in the Consumer Code for Home Builders. The Consumer Code sets mandatory requirements that all Home Builders must meet in their marketing and selling of homes and their after-sales customer service. Further information can be found at <a class="link-txt-color" href="www.consumercode.co.uk" target="_blank">www.consumercode.co.uk</a></p>
                                 </div>
                             </div>
-                            <div class="w-100">
+                            <div class="w-100 mb-4">
                                 <div class="p-0 float-left mr-4 ml-5" style="width: 12%;">
                                     <img class="w-100" src="~/images/hbf.jpg" alt="hbf">
                                 </div>

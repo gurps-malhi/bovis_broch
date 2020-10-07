@@ -234,6 +234,8 @@
 
   .why-buy-icon-tbl{
       width:49%;
+      float:left;
+      border-collapse:separate;
   }
 
   
@@ -271,4 +273,10 @@
     vertical-align: top;
     border-bottom: 0px solid #dee2e6;
    border-top: 0px solid #dee2e6 !important;
+  }
+
+  .bulletpoints__directions{
+    float:left;
+    width: 100%;
+    border-collapse:separate;
   }
