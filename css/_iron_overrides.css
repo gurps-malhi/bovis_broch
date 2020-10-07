@@ -239,7 +239,7 @@
   }
 
   
-.home-101-page table.bulletpoints__housetype tr td span:before{
+table.bulletpoints__housetype tr td span:before, table.bulletpoints__directions tr td span:before{
     content: "\2022";
     color: #8CD1E7;
     font-weight: bold;
@@ -249,7 +249,7 @@
     font-size: 19px;
   }
   
-  .home-101-page table.bulletpoints__housetype tr td span{
+ table.bulletpoints__housetype tr td span,table.bulletpoints__directions tr td span{
    margin-top:-5px;
    display:inline-block;
    font-size: 12px;
@@ -268,7 +268,7 @@
     margin-bottom: 0px;
   }
   
-  .home-101-page table.bulletpoints__housetype tbody td {
+  table.bulletpoints__housetype tbody td {
     padding: 3px 0px;
     vertical-align: top;
     border-bottom: 0px solid #dee2e6;
@@ -280,3 +280,8 @@
     width: 100%;
     border-collapse:separate;
   }
+
+  img.five-star-housebuilder {
+    display: block;
+    margin: 26px auto 0px;
+}
