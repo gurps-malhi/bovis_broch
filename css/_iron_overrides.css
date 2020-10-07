@@ -235,3 +235,40 @@
   .why-buy-icon-tbl{
       width:49%;
   }
+
+  
+.home-101-page table.bulletpoints__housetype tr td span:before{
+    content: "\2022";
+    color: #8CD1E7;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: 10px;
+    font-size: 19px;
+  }
+  
+  .home-101-page table.bulletpoints__housetype tr td span{
+   margin-top:-5px;
+   display:inline-block;
+   font-size: 12px;
+   line-height: 18px;
+  }
+  
+  .bulletpoints__housetype{
+    float:left;
+    width: 49%;
+    border-collapse:separate;
+  }
+  
+  .bulletpoints__housetype p{
+    margin-top:-21px;
+    margin-left:25px;
+    margin-bottom: 0px;
+  }
+  
+  .home-101-page table.bulletpoints__housetype tbody td {
+    padding: 3px 0px;
+    vertical-align: top;
+    border-bottom: 0px solid #dee2e6;
+   border-top: 0px solid #dee2e6 !important;
+  }

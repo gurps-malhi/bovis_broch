@@ -66,9 +66,33 @@
                 <h3 class="mt-15" style="font-size:15px">@Model.ObjBrochureHouse.HouseName -@PlotPrice - @Model.ObjBrochureHouse.HwBedroomCount bed @Model.ObjBrochureHouse.HwPropertyType</h3>
                 <hr style="margin-bottom:0.4rem;">
                 <div class="row-3">
+                    <table class="bulletpoints__housetype" style="width:49%; float:left; margin-right:1%;">                    
+                        @{
+                            int HalfOfUsps = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Model.LstBrochureUsps.Count()) / 2));
 
-                    <div class="col-xs-6">
-                        <ul class="reduce-indent">
+                            foreach (var uspItem in Model.LstBrochureUsps.Where(x => x.SortOrder <= HalfOfUsps).OrderBy(x => x.SortOrder))
+                            {
+                                <tr>
+                                <td><span><p>@uspItem.USPDesc</p></span></td>
+                                </tr>
+                            }
+                        }
+                    </table>
+
+                    <table class="bulletpoints__housetype" style="width:49%; float:left;">
+                            @{
+                                int HalfOfUsps = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Model.LstBrochureUsps.Count()) / 2));
+
+                                foreach (var uspItem in Model.LstBrochureUsps.Where(x => x.SortOrder <= HalfOfUsps).OrderBy(x => x.SortOrder))
+                                {
+                                    <tr>
+                                        <td><span><p>@uspItem.USPDesc</p></span></td>
+                                    </tr>
+                                }
+                            }
+                    </table>
+                    @* <div class="col-xs-6">
+                        <ul>
                             @{
                                 int HalfOfUsps = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Model.LstBrochureUsps.Count()) / 2));
 
@@ -80,7 +104,7 @@
                         </ul>
                     </div>
                     <div class="col-xs-6">
-                        <ul class="reduce-indent">
+                        <ul>
 
                             @{
                                 foreach (var uspItem in Model.LstBrochureUsps.Where(x => x.SortOrder > HalfOfUsps).OrderBy(x => x.SortOrder))
@@ -89,7 +113,7 @@
                                 }
                             }
                         </ul>
-                    </div>
+                    </div> *@
 
                 </div>
                 <div class="row-3">
