@@ -300,5 +300,6 @@ table.bulletpoints__housetype tr td span:before{
   
   img.five-star-housebuilder {
     display: block;
-    margin: 26px auto 0px;
+    width:112px;
+    height:131px;
   }
